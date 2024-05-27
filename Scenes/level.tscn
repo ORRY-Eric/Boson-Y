@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdgn0vfye8w88"]
+
+[ext_resource type="Script" path="res://Scripts/level.cs" id="1_uto16"]
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("axeRotation")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.436465)
+script = ExtResource("1_uto16")
+axeRotation = NodePath("Axe_Rotation")
+
+[node name="Axe_Rotation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.063, 0)

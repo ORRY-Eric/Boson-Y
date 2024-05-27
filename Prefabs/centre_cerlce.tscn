@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1llog17tp1l6"]
+
+[ext_resource type="PackedScene" uid="uid://dtvulhyocmqr5" path="res://Prefabs/platform_base.tscn" id="1_tftwm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f8bq"]
+size = Vector3(2.56314, 0.422363, 4.32071)
+
+[node name="centreCerlce" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="Platform_Base" parent="." instance=ExtResource("1_tftwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0316133, -4.10297, 0.0944672)
+shape = SubResource("BoxShape3D_4f8bq")

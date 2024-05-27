@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtvulhyocmqr5"]
+
+[ext_resource type="Script" path="res://Scripts/platform_base.cs" id="1_65je6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_or3py"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mi6su"]
+size = Vector3(3.20911, 0.404541, 4.9981)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3seox"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7gdu"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Platform_Base" type="StaticBody3D"]
+script = ExtResource("1_65je6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.2, 0, 0, 0, 0.4, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_or3py")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000587463, -0.00170898, -0.00631332)
+shape = SubResource("BoxShape3D_mi6su")
+
+[node name="ligneRougeCentre" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.005, 0, 0, 0, 1, 0, 0, 0, 2.48382, 0, 0.201304, 0)
+visible = false
+mesh = SubResource("PlaneMesh_3seox")
+surface_material_override/0 = SubResource("StandardMaterial3D_l7gdu")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbkdxgvy8dfr1"]
+
+[ext_resource type="PackedScene" uid="uid://dtvulhyocmqr5" path="res://Prefabs/platform_base.tscn" id="1_s4xa5"]
+[ext_resource type="PackedScene" uid="uid://df30g4e5dd1uo" path="res://Prefabs/platform_energie.tscn" id="2_7mbgt"]
+[ext_resource type="PackedScene" uid="uid://ch4wdm10cwpx4" path="res://Prefabs/anneau_vrai.tscn" id="3_pn5ec"]
+
+[node name="Ancien level" type="Node3D"]
+visible = false
+
+[node name="Platform_Base" parent="." instance=ExtResource("1_s4xa5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, 0)
+
+[node name="Platform_Energie" parent="." instance=ExtResource("2_7mbgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, -5)
+
+[node name="Platform_Energie2" parent="." instance=ExtResource("2_7mbgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, -10)
+
+[node name="Anneau Vrai" parent="." instance=ExtResource("3_pn5ec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, -15)
+
+[node name="Platform_Energie3" parent="." instance=ExtResource("2_7mbgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.916, -20)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7os4hkoqutso"]
+
+[ext_resource type="PackedScene" uid="uid://ch4wdm10cwpx4" path="res://Prefabs/anneau_vrai.tscn" id="2_mjjex"]
+
+[node name="Level_test" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="Origin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, 0)
+
+[node name="Anneau Vrai" parent="Origin" instance=ExtResource("2_mjjex")]

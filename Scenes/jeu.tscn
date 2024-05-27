@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://x4vvia03inhx"]
+
+[ext_resource type="PackedScene" uid="uid://bdgn0vfye8w88" path="res://Scenes/level.tscn" id="1_4h0qk"]
+[ext_resource type="Environment" uid="uid://c6kjmkud0qdrr" path="res://Prefabs/lumière_niveau.tres" id="1_ijnhh"]
+[ext_resource type="PackedScene" uid="uid://d0oonns5p3neg" path="res://Prefabs/Player.tscn" id="2_2yrjg"]
+[ext_resource type="PackedScene" uid="uid://da7i7f4kcsdmy" path="res://Prefabs/ui.tscn" id="4_nlx0i"]
+[ext_resource type="Script" path="res://Scripts/ligneNoirCentre.cs" id="5_dapn7"]
+[ext_resource type="Script" path="res://Scripts/Area3DDestroyPlateform.cs" id="5_guont"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ej6nx"]
+size = Vector3(11.8763, 1, 9.45093)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b221n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cka47"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aebf3"]
+size = Vector3(13.9821, 11.0082, 1)
+
+[node name="Jeu" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_ijnhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.318768, -0.933628, 0.16348, -0.0967159, 0.203617, 0.974262, -0.942886, 0.294752, -0.155203, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_2yrjg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.251168, -1.20036)
+
+[node name="Level" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("1_4h0qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+Player = NodePath("../Player")
+
+[node name="Area3DRecommencer" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DRecommencer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0269165, -4.25761, 0.0357666)
+shape = SubResource("BoxShape3D_ej6nx")
+
+[node name="UI" parent="." instance=ExtResource("4_nlx0i")]
+
+[node name="ligneNoirCentre" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.005, 0, 0, 0, 1, 0, 0, 0, 256.802, 0, 0.22, 0)
+visible = false
+mesh = SubResource("PlaneMesh_b221n")
+surface_material_override/0 = SubResource("StandardMaterial3D_cka47")
+script = ExtResource("5_dapn7")
+
+[node name="Area3DDestroyPlateform" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.091)
+script = ExtResource("5_guont")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DDestroyPlateform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179977, 3.63345, 15.9064)
+shape = SubResource("BoxShape3D_aebf3")
+
+[connection signal="area_entered" from="Area3DRecommencer" to="Player" method="_on_area_3d_recommencer_area_entered"]
+[connection signal="area_entered" from="Area3DDestroyPlateform" to="Area3DDestroyPlateform" method="_on_area_entered"]

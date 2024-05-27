@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch4wdm10cwpx4"]
+
+[ext_resource type="PackedScene" uid="uid://d1llog17tp1l6" path="res://Prefabs/centre_cerlce.tscn" id="1_ckwqu"]
+
+[node name="Anneau Vrai" type="Node3D"]
+
+[node name="centreCerlce" parent="." instance=ExtResource("1_ckwqu")]
+
+[node name="centreCerlce2" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce3" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce4" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce5" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce6" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(-0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce7" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="centreCerlce8" parent="." instance=ExtResource("1_ckwqu")]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 4.063, 0)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://df30g4e5dd1uo"]
+
+[ext_resource type="Script" path="res://Scripts/platform_energie.cs" id="1_7cbcs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_or3py"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vg4ey"]
+albedo_color = Color(0.129412, 1, 1, 1)
+emission_enabled = true
+emission = Color(0.0116783, 0.669452, 0.66972, 1)
+emission_energy_multiplier = 1.83
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mi6su"]
+size = Vector3(3.20136, 0.404541, 4.99417)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3kaw"]
+size = Vector3(3.19079, 0.478149, 4.99942)
+
+[node name="Platform_Energie" type="StaticBody3D"]
+script = ExtResource("1_7cbcs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.2, 0, 0, 0, 0.4, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_or3py")
+surface_material_override/0 = SubResource("StandardMaterial3D_vg4ey")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00147331, 0.000610352, 0.000705478)
+shape = SubResource("BoxShape3D_mi6su")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000415919, -0.00408936, -0.00020528)
+shape = SubResource("BoxShape3D_c3kaw")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

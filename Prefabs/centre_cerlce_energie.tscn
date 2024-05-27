@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://x8vf20vsouqj"]
+
+[ext_resource type="PackedScene" uid="uid://df30g4e5dd1uo" path="res://Prefabs/platform_energie.tscn" id="1_cy4va"]
+
+[node name="centreCercleEnergie" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.063, 0)
+
+[node name="Platform_Energie" parent="." instance=ExtResource("1_cy4va")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.063, 0)

@@ -5,7 +5,7 @@ using System.Reflection; // Ajoute Stack et List
 
 public partial class level : Node3D
 {
-	[Export] float speed = 4.0f;
+	[Export] float speed = 6.0f; // 4f
 	[Export] Node3D axeRotation;
 	[Export] CharacterBody3D Player;
 	float angleRotation = 45f; // 360 / 8 

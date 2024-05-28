@@ -24,7 +24,7 @@ public partial class level : Node3D
 
 	// int comptPlateform = 0;
 	// int maxPlateform = 10;
-	int distanceGeneration = 15;
+	int distanceGeneration = 30; // Default : 15
 
 	Stack<int> tableauAngle = new Stack<int>();
 	Stack<int> tabAngTemp = new Stack<int>();
@@ -68,12 +68,12 @@ public partial class level : Node3D
 		if(scriptGlobal.comptBlocEnergie > 0)
 		{
 			//GD.Print(scriptGlobal.energie);
-			//GD.Print(scriptGlobal.vitesseGlobalEnergie);
+			// GD.Print(scriptGlobal.vitesseGlobalEnergie);
 			//GD.Print(scriptGlobal.pourcentageEnergie);
 			
-			speed += scriptGlobal.vitesseGlobalEnergie;
-			scriptGlobal.energie += 0.02f;
-			scriptGlobal.vitesseGlobalEnergie += 0.00002f;
+			speed += scriptGlobal.vitesseGlobalEnergie * (float)delta;
+			scriptGlobal.energie += 1f * (float)delta;
+			scriptGlobal.vitesseGlobalEnergie += 0.04f * (float)delta;
 			scriptGlobal.pourcentageEnergie = (100 * scriptGlobal.energie) / scriptGlobal.objectifEnergie;
 		}
 		

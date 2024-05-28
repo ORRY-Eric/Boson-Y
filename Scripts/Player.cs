@@ -4,13 +4,13 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	[Export] AnimationPlayer animPlayer;
-	[Export] float speedFall = 1f; // 1
-	[Export] float gravity = 0.5f; // 0.5
+	[Export] float speedFall = 0.5f; // 1
+	[Export] float gravity = 0.2f; // 0.5
 	
-	float jumpForceMax = 8f;
-	float jumpForceInit = 5f;
+	float jumpForceMax = 6f; // 8f
+	float jumpForceInit = 2.5f; // 5f
 	float jumpForceTemp;
-	float jumpAdd = 0.25f;
+	float jumpAdd = 0.25f; // 0.25f
 	
 	bool isFall = false;
 	
@@ -96,7 +96,7 @@ public partial class Player : CharacterBody3D
 		{
 			jumpForceTemp += jumpAdd;
 			yVelocity = jumpForceTemp;
-			
+
 			//GD.Print("jumpForceTemp : " + jumpForceTemp + " | y : " + yVelocity);
 		}
 		else

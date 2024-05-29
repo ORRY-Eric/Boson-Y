@@ -94,7 +94,7 @@ public partial class level : Node3D
 		
 		scriptGlobal.animRotate = animRotate;
 		
-		if(animRotate == false && scriptGlobal.sautDisponible)
+		if(animRotate == false && scriptGlobal.sautDisponible && !scriptGlobal.estJump)
 		{
 			// Rotation LEFT RIGHT
 			if (Input.IsActionPressed("ui_left"))

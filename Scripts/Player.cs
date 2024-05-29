@@ -5,10 +5,10 @@ public partial class Player : CharacterBody3D
 {
 	[Export] AnimationPlayer animPlayer;
 	[Export] float speedFall = 0.5f; // 1
-	[Export] float gravity = 0.2f; // 0.5
+	[Export] float gravity = 0.4f; // 0.5
 	
 	float jumpForceMax = 6f; // 8f
-	float jumpForceInit = 2.5f; // 5f
+	float jumpForceInit = 2f; // 5f
 	float jumpForceTemp;
 	float jumpAdd = 0.25f; // 0.25f
 	
@@ -18,7 +18,11 @@ public partial class Player : CharacterBody3D
 	float yVelocity = 0;
 	Global scriptGlobal;
 
+	float gravityTemp = 0;
+
 	// bool estToucheMaintenue = false;
+
+	bool estJump = false;
 	
 	public override void _Ready()
 	{
@@ -55,7 +59,14 @@ public partial class Player : CharacterBody3D
 			
 			// Gestion Gravité
 			if(!scriptGlobal.sautDisponible)
-				yVelocity -= gravity;
+			{
+				// yVelocity -= gravity;
+				// yVelocity = Mathf.Clamp(yVelocity - gravity, -5f, jumpForceMax);
+				gravityTemp = Mathf.Clamp(gravityTemp + 0.01f, 0, 3);
+				// yVelocity -= gravityTemp;
+				yVelocity = Mathf.Clamp(yVelocity - gravityTemp, -6f, jumpForceInit);
+
+			}
 			
 			if (!isFall)
 				animPlayer.Play("jump");
@@ -64,9 +75,12 @@ public partial class Player : CharacterBody3D
 		direction.Y = yVelocity;
 		velocity = direction * speedFall;
 		
+		scriptGlobal.estJump = estJump;
+
 		if (Input.IsActionPressed("jump") && scriptGlobal.sautDisponible && !scriptGlobal.animRotate)
 		{
 			jump();
+			estJump = true;
 		}
 		
 		if (Input.IsActionJustReleased("jump"))
@@ -77,6 +91,7 @@ public partial class Player : CharacterBody3D
 		if ((Input.IsActionPressed("ui_left") || Input.IsActionPressed("ui_right"))  && scriptGlobal.sautDisponible)
 		{
 				jump();
+				estJump = true;
 		}
 		
 		if (Input.IsActionJustReleased("ui_left") || Input.IsActionJustReleased("ui_right"))
@@ -102,6 +117,7 @@ public partial class Player : CharacterBody3D
 		else
 		{
 			scriptGlobal.sautDisponible = false;
+			gravityTemp = 0;
 		}
 	}
 	
@@ -109,6 +125,8 @@ public partial class Player : CharacterBody3D
 	{
 		scriptGlobal.sautDisponible = true;
 		jumpForceTemp = jumpForceInit;
+		gravityTemp = 0;
+		estJump = false;
 	}
 	
 	private void _on_area_3d_recommencer_area_entered(Area3D area)

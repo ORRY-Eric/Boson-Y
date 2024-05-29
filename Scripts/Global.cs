@@ -17,6 +17,8 @@ public partial class Global : Node
 	public string debugText = "";
 	public bool animRotate = false;
 	
+	public bool estJump = false;
+
 	public void init()
 	{
 		//comptBlocEnergie = 0;
